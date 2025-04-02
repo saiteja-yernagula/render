@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "john",
+      "age": 30
+    },
+    {
+      "id": 2,
+      "name": "Jane",
+      "age": 30
+    },
+    {
+      "id": 4,
+      "name": "Alice",
+      "age": 35
+    },
+    {
+      "name": "sachin",
+      "age": 25,
+      "id": 5
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "jessy"
+    },
+    {
+      "id": 2,
+      "name": "jenny"
+    }
+  ]
+}

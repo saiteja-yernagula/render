@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+</head>
+<body>
+    <h2>Get Data</h2>
+    <button onclick="getdata()">Fetch Data</button>
+    <pre id="output"></pre>
+
+    <h2>Post Data</h2>
+    <form onsubmit="postdata(event)">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="number" id="age" placeholder="Age" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Put Data</h2>
+    <form onsubmit="putdata(event)">
+        <input type="number" id="putId" placeholder="ID" required>
+        <input type="text" id="city" placeholder="City" required>
+        <input type="text" id="state" placeholder="State" required>
+        <button type="submit">Update</button>
+    </form>
+
+    <h2>Patch Data</h2>
+    <form onsubmit="patchdata(event)">
+        <input type="number" id="patchId" placeholder="ID" required>
+        <input type="text" id="patchCity" placeholder="City">
+        <input type="text" id="patchState" placeholder="State">
+        <button type="submit">Update Partially</button>
+    </form>
+
+    <h2>Delete Data</h2>
+    <form onsubmit="deletedata(event)">
+        <input type="number" id="deleteId" placeholder="ID" required>
+        <button type="submit">Delete</button>
+    </form>
+
+    <script>
+        async function getdata(){
+            let response = await fetch("http://localhost:3000/data");
+            let data = await response.json();
+            document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+        }
+
+        async function postdata(event){
+            event.preventDefault();
+            let obj = {
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value
+            };
+            await fetch("http://localhost:3000/data", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(obj)
+            });
+        }
+
+        async function putdata(event){
+            event.preventDefault();
+            let obj = {
+                city: document.getElementById("city").value,
+                state: document.getElementById("state").value
+            };
+            let id = document.getElementById("putId").value;
+            await fetch(`http://localhost:3000/data/${id}`, {
+                method: "PUT",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(obj)
+            });
+        }
+
+        async function patchdata(event){
+            event.preventDefault();
+            let obj = {
+                city: document.getElementById("patchCity").value,
+                state: document.getElementById("patchState").value
+            };
+            let id = document.getElementById("patchId").value;
+            await fetch(`http://localhost:3000/data/${id}`, {
+                method: "PATCH",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(obj)
+            });
+        }
+
+        async function deletedata(event){
+            event.preventDefault();
+            let id = document.getElementById("deleteId").value;
+            await fetch(`http://localhost:3000/data/${id}`, {
+                method: "DELETE"
+            });
+        }
+    </script>
+</body>
+</html>
