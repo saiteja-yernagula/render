@@ -19,6 +19,26 @@
       "name": "sachin",
       "age": 25,
       "id": 5
+    },
+    {
+      "name": "raj",
+      "age": "12",
+      "id": 6
+    },
+    {
+      "name": "akhil",
+      "age": "10",
+      "id": 7
+    },
+    {
+      "user_id": "22",
+      "productname": "ss",
+      "id": 8
+    },
+    {
+      "user_id": "200",
+      "productname": "hjshssjs",
+      "id": 9
     }
   ],
   "user": [

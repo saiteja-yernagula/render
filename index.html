@@ -41,7 +41,7 @@
 
     <script>
         async function getdata(){
-            let response = await fetch("http://localhost:3000/data");
+            let response = await fetch("https://render-ye3e.onrender.com/data");
             let data = await response.json();
             document.getElementById("output").textContent = JSON.stringify(data, null, 2);
         }
@@ -52,7 +52,7 @@
                 name: document.getElementById("name").value,
                 age: document.getElementById("age").value
             };
-            await fetch("http://localhost:3000/data", {
+            await fetch("https://render-ye3e.onrender.com/data", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(obj)
@@ -66,7 +66,7 @@
                 state: document.getElementById("state").value
             };
             let id = document.getElementById("putId").value;
-            await fetch(`http://localhost:3000/data/${id}`, {
+            await fetch(`https://render-ye3e.onrender.com/data/${id}`, {
                 method: "PUT",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(obj)
@@ -80,7 +80,7 @@
                 state: document.getElementById("patchState").value
             };
             let id = document.getElementById("patchId").value;
-            await fetch(`http://localhost:3000/data/${id}`, {
+            await fetch(`https://render-ye3e.onrender.com/data/${id}`, {
                 method: "PATCH",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(obj)
@@ -90,7 +90,7 @@
         async function deletedata(event){
             event.preventDefault();
             let id = document.getElementById("deleteId").value;
-            await fetch(`http://localhost:3000/data/${id}`, {
+            await fetch(`https://render-ye3e.onrender.com/data/${id}`, {
                 method: "DELETE"
             });
         }
